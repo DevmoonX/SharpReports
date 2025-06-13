@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\ARIAL.TTF" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SharpReports.Lib\SharpReports.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\arial.ttf" />
   </ItemGroup>
 
 </Project>

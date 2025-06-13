@@ -15,7 +15,6 @@ public class ParagraphElement : ReportElement
         var currentSection = section ?? document.AddSection();
         var paragraph = currentSection.AddParagraph(Content ?? string.Empty);
         paragraph.Format.Font.Size = FontSize;
-        paragraph.Format.Font.Name = FontName;
         paragraph.Format.Font.Bold = Bold;
         paragraph.Format.Font.Italic = Italic;
     }
