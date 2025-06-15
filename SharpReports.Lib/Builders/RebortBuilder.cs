@@ -1,5 +1,6 @@
 using SharpReports.Lib.Builders.Interfaces;
 using SharpReports.Lib.Elements;
+using SharpReports.Lib.Export;
 namespace SharpReports.Lib.Builders;
 
 public class ReportBuilder : IReportBuilder
@@ -18,10 +19,16 @@ public class ReportBuilder : IReportBuilder
         return sectionBuilder;
     }
 
-    public Report Build()
+    public Report Build(bool Export = false, string filePath = "")
     {
+        if (Export)
+        {
+            _report.Render();
+            var exporter = new PDFExporter();
+            exporter.Export(_report, filePath);
+            return _report;
+        }
         return _report;
     }
-
 
 }
