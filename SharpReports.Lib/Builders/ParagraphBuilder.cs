@@ -37,6 +37,24 @@ public class ParagraphBuilder : IParagraphBuilder
         return this;
     }
 
+    public IParagraphBuilder SetAllignment(string alignment)
+    {
+        _paragraph.Alignment = alignment;
+        return this;
+    }
+
+    public IParagraphBuilder SetUnderline(bool underline)
+    {
+        _paragraph.Underline = underline;
+        return this;
+    }
+
+    public IParagraphBuilder SetColor(string color)
+    {
+        _paragraph.Color = color;
+        return this;
+    }
+
     public SectionBuilder EndParagraph()
     {
         _parentBuilder._section.Elements.Add(_paragraph);
