@@ -6,4 +6,7 @@ public interface ISectionBuilder : IReportElementBuilder
     IParagraphBuilder AddParagraph(string text);
     ITitleBuilder AddTitle(string title);
 
+    ISectionBuilder AddBreakLine();
+    ISectionBuilder AddHorizontalLine();
+
 }
