@@ -10,9 +10,9 @@ public class ParagraphElement : ReportElement
     public bool Bold { get; set; } = false;
     public bool Italic { get; set; } = false;
 
-    public string? Color { get; set; } = "black";
+    public ReportColor Color { get; set; } = ReportColor.Black;
 
-    public string? Alignment { get; set; } = "left"; // left, right, center, justify
+    public ParagraphAlignment Alignment { get; set; } = ParagraphAlignment.Left;
 
     public bool Underline { get; set; } = false;
 
@@ -24,18 +24,19 @@ public class ParagraphElement : ReportElement
         paragraph.Format.Font.Bold = Bold;
         paragraph.Format.Font.Italic = Italic;
         paragraph.Format.Font.Underline = Underline ? MigraDoc.DocumentObjectModel.Underline.Single : MigraDoc.DocumentObjectModel.Underline.None;
-        paragraph.Format.Alignment = Alignment.ToLower() switch
+        paragraph.Format.Alignment = Alignment switch
         {
-            "left" => ParagraphAlignment.Left,
-            "right" => ParagraphAlignment.Right,
-            "center" => ParagraphAlignment.Center,
-            _ => ParagraphAlignment.Justify
+            ParagraphAlignment.Left => MigraDoc.DocumentObjectModel.ParagraphAlignment.Left,
+            ParagraphAlignment.Center => MigraDoc.DocumentObjectModel.ParagraphAlignment.Center,
+            ParagraphAlignment.Right => MigraDoc.DocumentObjectModel.ParagraphAlignment.Right,
+            ParagraphAlignment.Justify => MigraDoc.DocumentObjectModel.ParagraphAlignment.Justify,
+            _ => MigraDoc.DocumentObjectModel.ParagraphAlignment.Left
         };
-        paragraph.Format.Font.Color = Color.ToLower() switch
+        paragraph.Format.Font.Color = Color switch
         {
-            "black" => MigraDoc.DocumentObjectModel.Color.FromRgb(0, 0, 0),
-            "red" => MigraDoc.DocumentObjectModel.Color.FromRgb(255, 0, 0),
-            "blue" => MigraDoc.DocumentObjectModel.Color.FromRgb(0, 0, 255),
+            ReportColor.Black => MigraDoc.DocumentObjectModel.Color.FromRgb(0, 0, 0),
+            ReportColor.Red => MigraDoc.DocumentObjectModel.Color.FromRgb(255, 0, 0),
+            ReportColor.Blue => MigraDoc.DocumentObjectModel.Color.FromRgb(0, 0, 255),
             _ => MigraDoc.DocumentObjectModel.Color.FromRgb(0, 0, 0)
         };
     }

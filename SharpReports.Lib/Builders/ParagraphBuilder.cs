@@ -37,7 +37,7 @@ public class ParagraphBuilder : IParagraphBuilder
         return this;
     }
 
-    public IParagraphBuilder SetAllignment(string alignment)
+    public IParagraphBuilder SetAllignment(ParagraphAlignment alignment)
     {
         _paragraph.Alignment = alignment;
         return this;
@@ -49,7 +49,7 @@ public class ParagraphBuilder : IParagraphBuilder
         return this;
     }
 
-    public IParagraphBuilder SetColor(string color)
+    public IParagraphBuilder SetColor(ReportColor color)
     {
         _paragraph.Color = color;
         return this;

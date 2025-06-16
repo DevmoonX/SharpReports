@@ -7,9 +7,9 @@ public interface IParagraphBuilder : IReportElementBuilder
     IParagraphBuilder SetBold(bool bold);
     IParagraphBuilder SetItalic(bool italic);
 
-    IParagraphBuilder SetAllignment(string alignment);
+    IParagraphBuilder SetAllignment(ParagraphAlignment alignment);
 
-    IParagraphBuilder SetColor(string color);
+    IParagraphBuilder SetColor(ReportColor color);
 
     IParagraphBuilder SetUnderline(bool underline);
 
