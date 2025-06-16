@@ -15,6 +15,20 @@ public class DocumentElement : ReportElement, IContainerElement
         return document;
     }
 
+    public Document CreateDocument()
+    {
+        var document = new Document();
+        document.AddSection(); // add one default section
+        return document;
+    }
+
+    public void RenderContent(Document document, Section section)
+    {
+        foreach (var element in Elements)
+        {
+            element.Render(document, section);
+        }
+    }
     public override void Render(Document document, MigraDoc.DocumentObjectModel.Section? section = null)
     {
         if (section == null)
