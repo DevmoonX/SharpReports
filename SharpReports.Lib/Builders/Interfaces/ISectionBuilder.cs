@@ -8,4 +8,7 @@ public interface ISectionBuilder : IReportElementBuilder
         int fontSize = 12, ReportColor color = ReportColor.Black);
     ITitleBuilder AddTitle(string title);
 
+    ISectionBuilder AddBreakLine();
+
+    ISectionBuilder AddHorizontalLine();
 }

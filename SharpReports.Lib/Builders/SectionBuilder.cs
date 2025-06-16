@@ -36,6 +36,19 @@ public class SectionBuilder : ISectionBuilder
         return _parentBuilder;
     }
 
+    public ISectionBuilder AddBreakLine()
+    {
+        var paragraphBuilder = new BreakLineElement();
+        _section.Elements.Add(paragraphBuilder);
+        return this;
+    }
+
+    public ISectionBuilder AddHorizontalLine()
+    {
+        var horizontalLine = new HorizontalRuleElement();
+        _section.Elements.Add(horizontalLine);
+        return this;
+    }
     public IReportElements Build()
     {
         return _section;
