@@ -13,9 +13,13 @@ public class SectionBuilder : ISectionBuilder
         _parentBuilder = parentBuilder;
     }
 
-    public IParagraphBuilder AddParagraph(string text)
+    public IParagraphBuilder AddParagraph(string text, bool isBold = false,
+     bool isItalic = false, bool isUnderline = false, ParagraphAlignment alignment = ParagraphAlignment.Left,
+      int fontSize = 12, ReportColor color = ReportColor.Black)
     {
-        var paragraphBuilder = new ParagraphBuilder(this).AddText(text);
+        var paragraphBuilder = new ParagraphBuilder(this).AddText(text).SetUnderline(isUnderline)
+            .SetAllignment(alignment).SetFontSize(fontSize).SetBold(isBold)
+            .SetItalic(isItalic).SetColor(color);
         return paragraphBuilder;
     }
 
