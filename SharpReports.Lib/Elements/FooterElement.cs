@@ -9,6 +9,8 @@ public class FooterElement : ReportElement, IReportElements
 
     public double FontSize { get; set; } = 12;
 
+    public bool enablePageNumber { get; set; } = true;
+
     public ParagraphAlignment Alignment { get; set; } = ParagraphAlignment.Left;
 
     // This method is for the report to call directly for header rendering
@@ -25,6 +27,10 @@ public class FooterElement : ReportElement, IReportElements
             ParagraphAlignment.Justify => MigraDoc.DocumentObjectModel.ParagraphAlignment.Justify,
             _ => MigraDoc.DocumentObjectModel.ParagraphAlignment.Left
         };
+        if (enablePageNumber)
+        {
+            para.AddPageField();
+        }
     }
 
     // This override is required for IReportElements/ReportElement

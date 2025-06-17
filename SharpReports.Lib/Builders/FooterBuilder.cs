@@ -31,6 +31,12 @@ public class FooterBuilder : IFooterBuilder
         return this;
     }
 
+    public IFooterBuilder EnablePageNumber(bool enable = true)
+    {
+        _footer.enablePageNumber = enable;
+        return this;
+    }
+
     public IReportBuilder EndFooter()
     {
         _parentBuilder._report.Root.Elements.Add(_footer);
