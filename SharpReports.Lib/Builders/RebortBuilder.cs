@@ -33,12 +33,32 @@ public class ReportBuilder : IReportBuilder
         return footerBuilder;
     }
 
+    private string? _watermarkText;
+    private double _watermarkFontSize = 48;
+    private double _watermarkAngle = -40;
+    private int _watermarkAlpha = 60;
+    public ReportBuilder WithWatermark(string text, double fontSize = 48, double angle = -40, int alpha = 60)
+    {
+        _watermarkText = text;
+        _watermarkFontSize = fontSize;
+        _watermarkAngle = angle;
+        _watermarkAlpha = alpha;
+        return this;
+    }
+
     public Report Build(bool Export = false, string filePath = "")
     {
         if (Export)
         {
             _report.Render();
             var exporter = new PDFExporter();
+            if (!string.IsNullOrEmpty(_watermarkText))
+            {
+                exporter.WatermarkText = _watermarkText;
+                exporter.WatermarkFontSize = _watermarkFontSize;
+                exporter.WatermarkAngle = _watermarkAngle;
+                exporter.WatermarkAlpha = _watermarkAlpha;
+            }
             exporter.Export(_report, filePath);
             return _report;
         }
