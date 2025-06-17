@@ -20,28 +20,17 @@ public class ReportBuilder : IReportBuilder
         return sectionBuilder;
     }
 
-    public ReportBuilder AddHeader(string text, double fontSize = 12, ParagraphAlignment alignment = ParagraphAlignment.Left)
+    public IHeaderBuilder AddHeader(string text)
     {
-        var header = new HeaderElement
-        {
-            text = text,
-            FontSize = fontSize,
-            Alignment = alignment
-        };
-        _report.Root.Elements.Add(header);
-        return this;
+        var headerBuilder = new HeaderBuilder(this).AddText(text);
+
+        return headerBuilder;
     }
 
-    public ReportBuilder AddFooter(string text, double fontSize = 12, ParagraphAlignment alignment = ParagraphAlignment.Left)
+    public IFooterBuilder AddFooter(string text)
     {
-        var footer = new FooterElement
-        {
-            text = text,
-            FontSize = fontSize,
-            Alignment = alignment
-        };
-        _report.Root.Elements.Add(footer);
-        return this;
+        var footerBuilder = new FooterBuilder(this).AddText(text);
+        return footerBuilder;
     }
 
     public Report Build(bool Export = false, string filePath = "")
