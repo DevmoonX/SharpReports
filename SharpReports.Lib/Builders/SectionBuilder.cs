@@ -36,6 +36,12 @@ public class SectionBuilder : ISectionBuilder
         return _parentBuilder;
     }
 
+    public IImageBuilder AddImage(string imagePath)
+    {
+        var imageBuilder = new ImageBuilder(this).SetImagePath(imagePath);
+        return imageBuilder;
+    }
+
     public ISectionBuilder AddBreakLine()
     {
         var paragraphBuilder = new BreakLineElement();

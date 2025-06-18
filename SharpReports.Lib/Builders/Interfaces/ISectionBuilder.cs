@@ -10,5 +10,7 @@ public interface ISectionBuilder : IReportElementBuilder
 
     ISectionBuilder AddBreakLine();
 
+    IImageBuilder AddImage(string imagePath);
+
     ISectionBuilder AddHorizontalLine();
 }
